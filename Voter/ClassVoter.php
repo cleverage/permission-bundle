@@ -68,6 +68,9 @@ class ClassVoter implements VoterInterface
             if (!array_key_exists($attribute, $permissions)) {
                 return VoterInterface::ACCESS_GRANTED; // No permissions means access is granted
             }
+            if (null === $permissions[$attribute]) {
+                return VoterInterface::ACCESS_GRANTED; // Null means access granted
+            }
 
             if ($this->decisionManager->decide($token, (array) $permissions[$attribute])) {
                 return VoterInterface::ACCESS_GRANTED;
