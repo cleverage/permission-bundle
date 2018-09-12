@@ -1,0 +1,12 @@
+services:
+    CleverAge\PermissionBundle\Voter\ClassVoter:
+        autowire: true
+        public: false
+        tags:
+            - { name: security.voter }
+
+    CleverAge\PermissionBundle\Voter\DataVoter:
+        autowire: true
+        public: false
+        tags:
+            - { name: security.voter }

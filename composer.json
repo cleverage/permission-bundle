@@ -1,0 +1,29 @@
+{
+    "name": "cleverage/permission-bundle",
+    "description": "Attribute-level permissions based on roles for PHP classes",
+    "keywords": [
+        "permissions",
+        "roles"
+    ],
+    "homepage": "https://github.com/cleverage/permission-bundle",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Vincent Chalnot",
+            "email": "vchalnot@clever-age.com",
+            "homepage": "http://chalnot.fr",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "CleverAge\\PermissionBundle\\": ""
+        }
+    },
+    "require": {
+        "php": ">=7.1",
+        "symfony/symfony": "^3.0|^4.0",
+        "sidus/base-bundle": "1.0.*"
+    }
+}
