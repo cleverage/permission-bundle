@@ -68,6 +68,6 @@ class Configuration implements ConfigurationInterface
      */
     protected function appendClassDefinition(NodeBuilder $classDefinition): void
     {
-        $classDefinition->variableNode('permissions')->end();
+        $classDefinition->variableNode('permissions')->isRequired()->end();
     }
 }
