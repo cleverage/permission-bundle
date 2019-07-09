@@ -1,0 +1,6 @@
+services:
+    CleverAge\PermissionBundle\Form\Extension\FormPermissionExtension:
+        autowire: true
+        public: false
+        tags:
+            - { name: form.type_extension, extended_type: Symfony\Component\Form\Extension\Core\Type\FormType }
