@@ -1,6 +1,6 @@
 {
     "name": "cleverage/permission-bundle",
-    "description": "Attribute-level permissions based on roles for PHP classes",
+    "description": "Simple permissions based on roles against any PHP object, class or any string",
     "keywords": [
         "permissions",
         "roles"
@@ -23,7 +23,12 @@
     },
     "require": {
         "php": ">=7.1",
-        "symfony/symfony": "^3.0|^4.0",
-        "sidus/base-bundle": "1.0.*"
+        "symfony/http-kernel": "^3.0|^4.0",
+        "symfony/dependency-injection": "^3.0|^4.0",
+        "symfony/config": "^3.0|^4.0",
+        "symfony/form": "^3.0|^4.0",
+        "symfony/options-resolver": "^3.0|^4.0",
+        "symfony/security-core": "^3.0|^4.0",
+        "sidus/base-bundle": "~1.0"
     }
 }
