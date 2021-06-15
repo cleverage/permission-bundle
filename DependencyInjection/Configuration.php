@@ -2,7 +2,7 @@
 /*
  * This file is part of the CleverAge/PermissionBundle package.
  *
- * Copyright (c) 2015-2019 Clever-Age
+ * Copyright (c) 2015-2021 Clever-Age
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -41,8 +41,8 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root($this->root);
+        $treeBuilder = new TreeBuilder($this->root);
+        $rootNode = $treeBuilder->getRootNode();
 
         $classDefinition = $rootNode
             ->children()

@@ -2,7 +2,7 @@
 /*
  * This file is part of the CleverAge/PermissionBundle package.
  *
- * Copyright (c) 2015-2019 Clever-Age
+ * Copyright (c) 2015-2021 Clever-Age
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -29,19 +29,12 @@ class FormPermissionExtension extends AbstractTypeExtension
     /** @var AuthorizationCheckerInterface */
     protected $authorizationChecker;
 
-    /**
-     * @param AuthorizationCheckerInterface $authorizationChecker
-     */
     public function __construct(
         AuthorizationCheckerInterface $authorizationChecker
     ) {
         $this->authorizationChecker = $authorizationChecker;
     }
 
-    /**
-     * @param FormBuilderInterface $builder
-     * @param array                $options
-     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->addEventListener(
@@ -64,9 +57,6 @@ class FormPermissionExtension extends AbstractTypeExtension
         );
     }
 
-    /**
-     * @param OptionsResolver $resolver
-     */
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults(
@@ -76,8 +66,8 @@ class FormPermissionExtension extends AbstractTypeExtension
             ]
         );
 
-        $resolver->setAllowedTypes('read_permissions', ['NULL', 'array']);
-        $resolver->setAllowedTypes('edit_permissions', ['NULL', 'array']);
+        $resolver->setAllowedTypes('read_permissions', ['null', 'array']);
+        $resolver->setAllowedTypes('edit_permissions', ['null', 'array']);
 
         $resolver->setNormalizer(
             'disabled',
@@ -91,11 +81,13 @@ class FormPermissionExtension extends AbstractTypeExtension
         );
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function getExtendedType(): string
     {
         return FormType::class;
+    }
+
+    public static function getExtendedTypes(): iterable
+    {
+        return [FormType::class];
     }
 }
