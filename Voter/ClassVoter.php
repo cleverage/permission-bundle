@@ -51,19 +51,16 @@ class ClassVoter implements VoterInterface
      */
     public function vote(TokenInterface $token, $object, array $attributes): int
     {
-        $result = VoterInterface::ACCESS_ABSTAIN;
-
         if (!\is_string($object)) {
-            return $result;
+            return VoterInterface::ACCESS_ABSTAIN;
         }
 
         if (!array_key_exists($object, $this->classPermissions)) {
-            return $result;
+            return VoterInterface::ACCESS_ABSTAIN;
         }
 
         $permissions = $this->classPermissions[$object];
 
-        $result = VoterInterface::ACCESS_DENIED;
         foreach ($attributes as $attribute) {
             if (!array_key_exists($attribute, $permissions)) {
                 return VoterInterface::ACCESS_GRANTED; // No permissions means access is granted
@@ -72,11 +69,13 @@ class ClassVoter implements VoterInterface
                 return VoterInterface::ACCESS_GRANTED; // Null means access granted
             }
 
-            if ($this->decisionManager->decide($token, (array) $permissions[$attribute])) {
-                return VoterInterface::ACCESS_GRANTED;
+            foreach ($permissions[$attribute] as $permission) {
+                if ($this->decisionManager->decide($token, [$permission])) {
+                    return VoterInterface::ACCESS_GRANTED;
+                }
             }
         }
 
-        return $result;
+        return VoterInterface::ACCESS_DENIED;
     }
 }
